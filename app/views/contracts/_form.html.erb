@@ -1,0 +1,17 @@
+<%= simple_form_for @contract do |f| %>
+  <%= f.association :customer, label: 'Cliente' %>
+  <%= f.input :delivery_address, label: 'Endereço de Entrega: ' %>
+  <%= f.input :rental_period, label: 'Prazo de Locação: ' %>
+  <%= f.input :total_amount, label: 'Valor Total' %>
+  <%= f.input :discount, label: 'Desconto: ' %>
+  <%= f.association :equipment, as: :check_boxes, label_method: :full_description, collection: Equipment.all, label: 'Equipamentos: ' %>
+  <%= f.input :contact, label: 'Responsável: ' %>
+  <%= f.input :number, label: 'Número de Contrato' %>
+  <%= f.submit 'Emitir Contrato' %>
+<% end %>
+
+<div class="btn btn-primary">
+
+  <%= link_to 'Voltar', root_path, :class => "btn" %>
+
+</div>

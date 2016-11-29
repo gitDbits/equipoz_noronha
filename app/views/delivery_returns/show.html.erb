@@ -1,0 +1,15 @@
+<h1>Recibo de Devolução</h1>
+<p>São Paulo, <%= Time.zone.now %></p>
+<p>
+  Eu, <%= @contract.delivery_return.name %>, declaro ter recebido
+  os equipamentos<%= @contract.equipment.each do |equipment| %>
+    <%= equipment.full_description %>
+  <% end %> em devolução referente ao contrato <%= @contract.number %>
+  em perfeitas condições da empresa <%= @contract.customer.legal_name %>,
+  inscrita no <%= @contract.customer.document %>
+  no dia <%= @contract.delivery_return.created_at %>
+
+  <p>____________________________</p>
+  <p>Assinatura do Funcionário</p>
+  <p><%= @contract.delivery_return.document %></p>
+</p>

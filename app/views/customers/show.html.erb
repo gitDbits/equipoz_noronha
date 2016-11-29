@@ -1,0 +1,12 @@
+<section>
+  <p>Nome: <%= @customer.name %></p>
+  <p>Tipo: <%= @customer.customer_type%></p>
+  <p>CPF/CNPJ: <%= @customer.document %></p>
+  <p>Inscrição Estadual: <%= @customer.fiscal_number %></p>
+  <p>Razão Social: <%= @customer.legal_name %></p>
+  <p>Contato Cobrança: <%= @customer.contact_name %></p>
+  <p>Telefone: <%= @customer.phone_number %></p>
+  <p>Email: <%= @customer.email %></p>
+  <p>Endereço: <%= @customer.address %></p>
+</section>
+<%= link_to 'Voltar', new_customer_path %>

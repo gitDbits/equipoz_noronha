@@ -1,0 +1,36 @@
+<a class="btn btn-lg btn-primary" role ="button"
+	<%= link_to 'Novo Cliente', new_customer_path %>
+</a>
+<br>
+<br>
+<div class="panel panel-default">
+	<div class="panel-heading">Lista de Clientes</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Código</th>
+					<th>Nome</th>
+					<th>Cont Cobrança</th>
+					<th>Telefone</th>
+					<th>Email</th>
+					<th>Endereço</th>
+					<th>...</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<% @customers.each do |customer| %>
+					<th scope="row"><%= customer.id %></th>
+					<td><%= customer.name %></td>
+					<td><%= customer.contact_name %></td>
+					<td><%= customer.phone_number %></td>
+					<td><%= customer.email %></td>
+					<td><%= customer.address %></td>
+					<td>
+						<%= link_to 'Visualizar', customer_path(customer.id) %>
+					</td>
+					<% end %>
+				</tr>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,16 @@
+<h1>Recibo de Entrega</h1>
+<p>São Paulo, <%= Time.zone.now %></p>
+<p>
+  Eu, <%= @contract.contact %>, em nome da empresa
+  <%= @contract.customer.legal_name %>, inscrita no CNPJ
+  <%= @contract.customer.document %> declaro ter recebido, os equipamentos
+  <% @contract.equipment.each do |equipment| %>
+    <%= equipment.full_description %>
+  <% end %>
+  pelo período de <%= @contract.rental_period %> em perfeitas
+  condições de uso no endereço <%= @contract.delivery_address %>.
+  no dia <%= @contract.created_at %> de acordo com o contrato
+  <%= @contract.number %><br>
+  <p>_____________________________</p>
+  <p>Assinatura do Responsável</p>
+</p>

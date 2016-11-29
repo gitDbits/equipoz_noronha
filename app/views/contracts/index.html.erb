@@ -1,0 +1,16 @@
+<% if @contracts.count > 0 %>
+  <% @contracts.each do |contract| %>
+  <h1><%= contract.customer.name %></h1>
+  <%= contract.delivery_address %>
+  <%= contract.total_amount %>
+
+    <% if contract.equipment.count > 0 %>
+    <h2>Equipamentos</h2>
+      <% contract.equipment.each do |eqp| %>
+      <%= eqp.full_description %>
+      <% end %>
+    <% end  %>
+  <% end %>
+<% else %>
+  <h1>Não foi possível encontrar nenhum contrato</h1>
+<% end %>

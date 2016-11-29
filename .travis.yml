@@ -1,0 +1,25 @@
+language: ruby
+rvm:
+  - 2.3.1
+before_script:
+  - bundle exec rails db:create
+  - bundle exec rails db:migrate
+script:
+  - bundle exec rubocop
+  - bundle exec rspec spec
+notifications:
+  email:
+    recipients:
+      - alan.batista@campuscode.com.br
+      - dbs.noronha@gmail.com
+      - blbacelar@gmail.com
+      - caiohenriquemaciel@gmail.com
+      - regis.seki@gmail.com
+      - antelio@gmail.com
+    on_success: always
+    on_failure: always
+deploy:
+  provider: heroku
+  api_key: 2f08bf1f-308b-4a82-b696-42327410d10e
+  app: equipoz-alfa
+  run: "rails db:migrate"

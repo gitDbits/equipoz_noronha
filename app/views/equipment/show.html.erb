@@ -1,0 +1,9 @@
+<%= @equipment.serial_number %>
+<%= @equipment.name %>
+<%= @equipment.category %>
+<%= @equipment.replacement_value %>
+<%  data = @equipment.acquisition_date %>
+<%= data.strftime("%d/%m/%Y") %>
+<%= @equipment.usage_limit %>
+
+<%= link_to 'Voltar', new_equipment_path  %>

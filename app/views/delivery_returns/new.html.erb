@@ -1,0 +1,5 @@
+<%= simple_form_for [@contract, @delivery_return] do |f| %>
+	<%= f.input :name, label: 'Nome' %>
+	<%= f.input :document, label: 'CPF' %>
+	<%= f.button :submit, 'Emitir' %>
+<% end %>

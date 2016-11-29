@@ -1,0 +1,19 @@
+<h1>Contrato</h1>
+<p>Número de Contrato: <%= @contract.number %></p>
+<p>Cliente:<%= @contract.customer.name %></p>
+<p>Endereço de Entrega:<%= @contract.delivery_address %></p>
+<p>Prazo de Locação:<%= @contract.rental_period %></p>
+<p>Valor Total:<%= @contract.total_amount %>/p>
+<p>Desconto:<%= @contract.discount %></p>
+<p>Equipamento:
+  <% @contract.equipment.each do |equipment| %>
+    <%= equipment.full_description %>
+  <% end %>
+
+<p>Responsável:<%= @contract.contact %></p>
+Total: <%= @contract.total_contract %>
+
+<%= link_to 'Recibo Entrega', delivery_receipt_contract_path %>
+<%= link_to 'Visualizar Recibo Entrega', delivery_receipt_contract_path %>
+<%= link_to 'Recibo Devolução', new_contract_delivery_return_path(@contract) %>
+<%= link_to 'Visualizar Recibo Devolução', delivery_return_contract_path %>

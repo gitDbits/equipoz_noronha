@@ -1,0 +1,6 @@
+<%= simple_form_for @category do |f| %>
+  <%= f.input :name, label: 'Nome' %>
+  <%= f.submit 'Cadastrar' %>
+<% end %>
+
+<%= link_to 'Voltar', root_path %>
