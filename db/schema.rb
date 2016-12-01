@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161124234057) do
+ActiveRecord::Schema.define(version: 20161201151110) do
 
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -46,8 +46,10 @@ ActiveRecord::Schema.define(version: 20161124234057) do
   end
 
   create_table "delivery_receipts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "contract_id"
+    t.index ["contract_id"], name: "index_delivery_receipts_on_contract_id"
   end
 
   create_table "delivery_returns", force: :cascade do |t|
