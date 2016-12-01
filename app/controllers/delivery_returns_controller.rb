@@ -15,7 +15,7 @@ class DeliveryReturnsController < ApplicationController
     if @delivery_return.save
       redirect_to delivery_return_contract_path(@contract)
     else
-      flash[:error] = 'Não foi possivel emitir Recibo Devolução'
+      flash.now[:error] = 'Não foi possivel emitir Recibo Devolução'
       render :new
     end
   end

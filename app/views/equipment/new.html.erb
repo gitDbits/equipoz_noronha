@@ -1,17 +1,1 @@
-<%= simple_form_for @equipment do |f| %>
-  <%= f.input :serial_number, label: 'Número de série' %>
-  <%= f.input :name, label: 'Nome' %>
-  <%= f.input :category, label: 'Categoria' %>
-  <%= f.input :replacement_value, label: 'Custo de reposição' %>
-  <%= f.input :acquisition_date, label: 'Data de aquisição', as: 'string' %>
-  <%= f.input :usage_limit, label: 'Validade' %>
-
-  <%= f.submit 'Cadastrar' %>
-
-<% end %>
-
-<div class="btn btn-primary">
-
-  <%= link_to 'Voltar', root_path, :class => "btn" %>
-
-</div>
+<%= render partial: 'form' %>

@@ -1,18 +1,1 @@
-<%= simple_form_for @customer do |f| %>
-  <%= f.input :name, label: 'Nome' %>
-  <%= f.input :customer_type, label: 'Tipo' %>
-  <%= f.input :document, label: 'CPF/CNPJ' %>
-  <%= f.input :fiscal_number, label: 'Inscrição Estadual' %>
-  <%= f.input :legal_name, label: 'Razão Social' %>
-  <%= f.input :contact_name, label: 'Contato Cobrança' %>
-  <%= f.input :phone_number, label: 'Telefone' %>
-  <%= f.input :email, label: 'Email' %>
-  <%= f.input :address, label: 'Endereço' %>
-  <%= f.submit 'Criar Cliente' %>
-<% end %>
-
-<div class="btn btn-primary">
-
-  <%= link_to 'Voltar', root_path, :class => "btn" %>
-
-</div>
+<%= render partial: 'form' %>

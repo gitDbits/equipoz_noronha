@@ -10,7 +10,10 @@
   pelo período de <%= @contract.rental_period %> em perfeitas
   condições de uso no endereço <%= @contract.delivery_address %>.
   no dia <%= @contract.created_at %> de acordo com o contrato
-  <%= @contract.number %><br>
+  <%= @contract.contract_number %><br>
   <p>_____________________________</p>
   <p>Assinatura do Responsável</p>
 </p>
+<button type="button" class="btn btn-default">
+  <%= link_to 'Voltar', contracts_path%>
+</button>

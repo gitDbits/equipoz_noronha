@@ -14,12 +14,12 @@
 					<th>Telefone</th>
 					<th>Email</th>
 					<th>Endereço</th>
-					<th>...</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
+				<% @customers.each do |customer| %>	
 				<tr>
-					<% @customers.each do |customer| %>
 					<th scope="row"><%= customer.id %></th>
 					<td><%= customer.name %></td>
 					<td><%= customer.contact_name %></td>
@@ -29,8 +29,8 @@
 					<td>
 						<%= link_to 'Visualizar', customer_path(customer.id) %>
 					</td>
-					<% end %>
 				</tr>
+				<% end %>
 		</tbody>
 	</table>
 </div>

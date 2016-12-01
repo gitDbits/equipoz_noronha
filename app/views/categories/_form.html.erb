@@ -1,0 +1,12 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">Cadastrar Categoria</div>
+  <div class="panel-body">
+    <%= simple_form_for @category do |f| %>
+      <%= f.input :name, label: 'Nome', placeholder: 'Digite o seu nome' %>
+      <%= f.submit 'Criar Categoria', class: 'btn btn-primary' %>
+      <button type="button" class="btn btn-default">
+        <%= link_to 'Voltar', categories_path%>
+      </button>
+    <% end %>
+  </div>
+</div>

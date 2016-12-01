@@ -13,7 +13,6 @@ feature 'user create category' do
     find_link('Voltar').visible?
   end
 
-
   scenario 'unsuccessfully' do
     visit new_category_path
 

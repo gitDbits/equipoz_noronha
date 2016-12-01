@@ -1,1 +1,36 @@
-<h1>Index dos Equipamentos</h1>
+<a class="btn btn-lg btn-primary" role ="button"
+	<%= link_to 'Novo Equipamento', new_equipment_path %>
+</a>
+<br>
+<br>
+<div class="panel panel-default">
+	<div class="panel-heading">Lista de Equipamentos</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Código</th>
+					<th>Nome</th>
+					<th>Numero Serial</th>
+					<th>Data de Aquisição</th>
+					<th>Data de Vencimento</th>
+					<th>Disponível</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @equipment.each do |equipment| %>	
+				<tr>
+					<th scope="row"><%= equipment.id %></th>
+					<td><%= equipment.name %></td>
+					<td><%= equipment.serial_number %></td>
+					<td><%= equipment.acquisition_date %></td>
+					<td><%= equipment.usage_limit %></td>
+					<td>????</td>
+					<td>
+						<%= link_to 'Visualizar', equipment_path(equipment.id) %>
+					</td>
+				</tr>
+				<% end %>
+		</tbody>
+	</table>
+</div>

@@ -12,7 +12,7 @@ class CustomersController < ApplicationController
     if @customer.save
       redirect_to @customer
     else
-      flash[:error] = 'Todos os campos devem ser preenchidos.'
+      flash.now[:error] = 'Todos os campos devem ser preenchidos.'
       render :new
     end
   end

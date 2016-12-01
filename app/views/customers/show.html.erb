@@ -1,12 +1,22 @@
-<section>
-  <p>Nome: <%= @customer.name %></p>
-  <p>Tipo: <%= @customer.customer_type%></p>
-  <p>CPF/CNPJ: <%= @customer.document %></p>
-  <p>Inscrição Estadual: <%= @customer.fiscal_number %></p>
-  <p>Razão Social: <%= @customer.legal_name %></p>
-  <p>Contato Cobrança: <%= @customer.contact_name %></p>
-  <p>Telefone: <%= @customer.phone_number %></p>
-  <p>Email: <%= @customer.email %></p>
-  <p>Endereço: <%= @customer.address %></p>
-</section>
-<%= link_to 'Voltar', new_customer_path %>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3>Código: <%= @customer.id %></h3>
+	</div>
+	<div class="panel-body">
+		<h2><%= @customer.name %></h2>
+		<h4>Tipo: <%= @customer.customer_type%></h4>
+  	<h4>CPF/CNPJ: <%= @customer.document %></h4>
+  	<h4>Inscrição Estadual: <%= @customer.fiscal_number %></h4>
+  	<h4>Razão Social: <%= @customer.legal_name %></h4>
+  	<h4>Contato Cobrança: <%= @customer.contact_name %></h4>
+  	<h4>Telefone: <%= @customer.phone_number %></h4>
+  	<h4>Email: <%= @customer.email %></h4>
+  	<h4>Endereço: <%= @customer.address %></h4>
+  	<button type="button" class="btn btn-default">
+        <%= link_to 'Editar', customers_path%>
+    </button>
+  	<button type="button" class="btn btn-default">
+        <%= link_to 'Voltar', customers_path%>
+    </button>
+	</div>
+</div>

@@ -41,9 +41,15 @@
                 Equipamentos<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li>
-                    <%= link_to 'Novo Equipamento', equipment_index_path %>
+                    <%= link_to 'Novo equipamento', new_equipment_path %>
                  </li>
-                  <li><%= link_to 'Categorias', categories_path %></li>
+                 <li>
+                    <%= link_to 'Lista equipamentos', equipment_index_path %>
+                 </li>
+                  <li><%= link_to 'Nova categoria', new_category_path %></li>
+                  <li>
+                    <%= link_to 'Lista categorias', categories_path %>
+                 </li>
                 </ul>
               </li>
               <li><a href="#">Tabela de Preço</a></li>

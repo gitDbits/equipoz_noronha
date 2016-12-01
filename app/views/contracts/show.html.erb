@@ -1,19 +1,46 @@
-<h1>Contrato</h1>
-<p>Número de Contrato: <%= @contract.number %></p>
-<p>Cliente:<%= @contract.customer.name %></p>
-<p>Endereço de Entrega:<%= @contract.delivery_address %></p>
-<p>Prazo de Locação:<%= @contract.rental_period %></p>
-<p>Valor Total:<%= @contract.total_amount %>/p>
-<p>Desconto:<%= @contract.discount %></p>
-<p>Equipamento:
-  <% @contract.equipment.each do |equipment| %>
-    <%= equipment.full_description %>
-  <% end %>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3>Numero Contrato: <%= @contract.contract_number %></h3>
+	</div>
+	<div class="panel-body">
+		<h3><%= @contract.customer.name %></h3>
+		<h4>Endereço de Entrega:<%= @contract.delivery_address %></h4>
+		<h4>Prazo de Locação:<%= @contract.rental_period %></h4>
+		<h4>Valor Total:<%= @contract.total_amount %></h4>
+		<h4>Desconto:<%= @contract.discount %></h4>
+		<h4>
+			<% @contract.equipment.each do |equipment| %>
+    		<%= equipment.full_description %>
+  		<% end %>
+		</h4>
+		<h4>Responsável:<%= @contract.contact %></h4>
+		<h4>Total: <%= @contract.total_contract %></h4>
+		
+		<% if @contract.id %>
+			<button type="button" class="btn btn-default">
+    		<%= link_to 'Visualizar Rec.Entrega',
+    		delivery_receipt_contract_path(@contract.id)%>
+    	</button>
+  	<% else %>				
+			<button type="button" class="btn btn-default">
+	    	<%= link_to 'Recibo Entrega',
+	    	delivery_receipt_contract_path(@contract.id)%>
+	    </button>
+    <% end %>
+  	<button type="button" class="btn btn-default">
+    	<%= link_to 'Recibo Devolução', 
+    	new_contract_delivery_return_path(@contract)%>
+    </button>
+    <button type="button" class="btn btn-default">
+    	<%= link_to 'Visualizar Rec Devolução', delivery_receipt_contract_path%>
+    </button>				
+		<button type="button" class="btn btn-default">
+    	<%= link_to 'Editar', contract_path%>
+    </button>
+  	<button type="button" class="btn btn-default">
+      <%= link_to 'Voltar', contracts_path%>
+    </button>
 
-<p>Responsável:<%= @contract.contact %></p>
-Total: <%= @contract.total_contract %>
-
-<%= link_to 'Recibo Entrega', delivery_receipt_contract_path %>
-<%= link_to 'Visualizar Recibo Entrega', delivery_receipt_contract_path %>
-<%= link_to 'Recibo Devolução', new_contract_delivery_return_path(@contract) %>
-<%= link_to 'Visualizar Recibo Devolução', delivery_return_contract_path %>
+    
+	</div>
+</div>

@@ -1,4 +1,8 @@
 class ContractsController < ApplicationController
+  def index
+    @contracts = Contract.all
+  end
+  
   def new
     @contract = Contract.new
     @customer = Customer.all
@@ -10,17 +14,13 @@ class ContractsController < ApplicationController
     if @contract.save
       redirect_to @contract
     else
-      flash.now[:error] = 'Não foi possível emitir o contrato'
+      flash.now[:error] = 'Todos os campos devem ser preenchidos.'
       render :new
     end
   end
 
   def show
     @contract = Contract.find(params[:id])
-  end
-
-  def index
-    @contracts = Contract.all
   end
 
   private

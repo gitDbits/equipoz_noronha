@@ -1,16 +1,33 @@
-<% if @contracts.count > 0 %>
-  <% @contracts.each do |contract| %>
-  <h1><%= contract.customer.name %></h1>
-  <%= contract.delivery_address %>
-  <%= contract.total_amount %>
+<a class="btn btn-lg btn-primary" role ="button"
+  <%= link_to 'Novo Contrato', new_contract_path %>
+</a>
+<br>
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">Lista Contratos</div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Numero Contrato</th>
+          <th>Cliente</th>
+          <th>Endereço Entrega</th>
+          <th>Valor Total</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @contracts.each do |contract| %> 
+        <tr>
+          <th scope="row"><%= contract.contract_number %></th>
+          <td><%= contract.customer.name %></td>
+          <td><%= contract.delivery_address %></td>
+          <td><%= contract.total_amount %></td>
+          <td>
+            <%= link_to 'Visualizar', contract_path(contract.id) %>
+          </td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
 
-    <% if contract.equipment.count > 0 %>
-    <h2>Equipamentos</h2>
-      <% contract.equipment.each do |eqp| %>
-      <%= eqp.full_description %>
-      <% end %>
-    <% end  %>
-  <% end %>
-<% else %>
-  <h1>Não foi possível encontrar nenhum contrato</h1>
-<% end %>

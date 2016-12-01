@@ -1,0 +1,22 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">Cadastrar Equipamento</div>
+  <div class="panel-body">
+  	<%= simple_form_for @equipment do |f| %>
+  		<%= f.input :serial_number, label: 'Número de série',
+  		placeholder: 'Digite o numero serial' %>
+  		<%= f.input :name, label: 'Nome',
+  		placeholder: 'Digite o nome do equipamento' %>
+		  <%= f.input :category, label: 'Categoria'%>
+		  <%= f.input :replacement_value, label: 'Custo de reposição',
+		  placeholder: 'Digite o custo de reposição' %>
+		  <%= f.input :acquisition_date, label: 'Data de aquisição', as: 'string',
+		  placeholder: 'Digite a data de aquisição' %>
+		  <%= f.input :usage_limit, label: 'Validade',
+		  placeholder: 'Digite a data de vencimento' %>
+		  <%= f.submit 'Criar Equipamento', class: 'btn btn-primary' %>
+      <button type="button" class="btn btn-default">
+        <%= link_to 'Voltar', equipment_index_path%>
+      </button>
+		<% end %>
+  </div>	
+</div>

@@ -1,9 +1,20 @@
-<%= @equipment.serial_number %>
-<%= @equipment.name %>
-<%= @equipment.category %>
-<%= @equipment.replacement_value %>
-<%  data = @equipment.acquisition_date %>
-<%= data.strftime("%d/%m/%Y") %>
-<%= @equipment.usage_limit %>
-
-<%= link_to 'Voltar', new_equipment_path  %>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3>Código: <%= @equipment.id %></h3>
+	</div>
+	<div class="panel-body">
+		<h2><%= @equipment.name %></h2>
+		<h4>Número de Série <%= @equipment.serial_number %></h4>
+		<h4>Categoria: <%= @equipment.category %></h4>
+		<h4>Valor Aquisição: <%= @equipment.replacement_value %></h4>
+		<h4><%  data = @equipment.acquisition_date %></h4>
+		<h4>Data de Aquisição: <%= data.strftime("%d/%m/%Y") %></h4>
+		<h4>Validade: <%= @equipment.usage_limit %> dias</h4>
+  	<button type="button" class="btn btn-default">
+        <%= link_to 'Editar', equipment_path%>
+    </button>
+  	<button type="button" class="btn btn-default">
+        <%= link_to 'Voltar', equipment_index_path%>
+    </button>
+	</div>
+</div>

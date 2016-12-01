@@ -1,4 +1,8 @@
 class EquipmentController < ApplicationController
+  def index
+    @equipment = Equipment.all
+  end
+
   def new
     @equipment = Equipment.new
   end
@@ -8,8 +12,7 @@ class EquipmentController < ApplicationController
     if @equipment.save
       redirect_to @equipment
     else
-      flash[:error] = 'Não foi possível cadastrar. \
-Todos os campos devem ser preenchidos'
+      flash.now[:error] = 'Todos os campos devem ser preenchidos.'
       render :new
     end
   end

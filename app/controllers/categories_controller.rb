@@ -1,4 +1,8 @@
 class CategoriesController < ApplicationController
+  def index
+    @categories = Category.all
+  end
+
   def new
     @category = Category.new
   end
@@ -8,7 +12,7 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to @category
     else
-      flash.now[:error] = 'Não foi possível cadastrar!'
+      flash.now[:error] = 'Todos os campos devem ser preenchidos.'
       render :new
     end
   end
@@ -22,5 +26,4 @@ class CategoriesController < ApplicationController
   def category_params
     params.required(:category).permit(:name)
   end
-
 end

@@ -18,4 +18,8 @@ class Contract < ApplicationRecord
   def total_contract
     total_amount - discount
   end
+
+  def contract_number
+    (created_at + id).to_i
+  end
 end

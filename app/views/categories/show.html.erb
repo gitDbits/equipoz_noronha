@@ -1,3 +1,14 @@
-<%= @category.name %>
-
-<%= link_to 'Voltar', new_category_path %>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3>Código: <%= @category.id %></h3>
+	</div>
+	<div class="panel-body">
+		<h2><%= @category.name %></h2>
+		<button type="button" class="btn btn-default">
+        <%= link_to 'Editar', categories_path%>
+    </button>
+  	<button type="button" class="btn btn-default">
+        <%= link_to 'Voltar', categories_path%>
+    </button>
+	</div>
+</div>
