@@ -4,7 +4,7 @@
   Eu, <%= @contract.delivery_return.name %>, declaro ter recebido
   os equipamentos<%= @contract.equipment.each do |equipment| %>
     <%= equipment.full_description %>
-  <% end %> em devolução referente ao contrato <%= @contract.number %>
+  <% end %> em devolução referente ao contrato <%= @contract.contract_number %>
   em perfeitas condições da empresa <%= @contract.customer.legal_name %>,
   inscrita no <%= @contract.customer.document %>
   no dia <%= @contract.delivery_return.created_at %>
@@ -13,3 +13,6 @@
   <p>Assinatura do Funcionário</p>
   <p><%= @contract.delivery_return.document %></p>
 </p>
+<button type="button" class="btn btn-default">
+  <%= link_to 'Voltar', contracts_path%>
+</button>

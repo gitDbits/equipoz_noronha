@@ -10,35 +10,72 @@
 		<h4>Desconto:<%= @contract.discount %></h4>
 		<h4>
 			<% @contract.equipment.each do |equipment| %>
-    		<%= equipment.full_description %>
-  		<% end %>
+			<%= equipment.full_description %>
+			<% end %>
 		</h4>
 		<h4>Responsável:<%= @contract.contact %></h4>
 		<h4>Total: <%= @contract.total_contract %></h4>
-		
-		<% if @contract.id %>
-			<button type="button" class="btn btn-default">
-    		<%= link_to 'Visualizar Rec.Entrega',
-    		delivery_receipt_contract_path(@contract.id)%>
-    	</button>
-  	<% else %>				
-			<button type="button" class="btn btn-default">
-	    	<%= link_to 'Recibo Entrega',
-	    	delivery_receipt_contract_path(@contract.id)%>
-	    </button>
-    <% end %>
-  	<button type="button" class="btn btn-default">
-    	<%= link_to 'Recibo Devolução', 
-    	new_contract_delivery_return_path(@contract)%>
-    </button>
-    <button type="button" class="btn btn-default">
-    	<%= link_to 'Visualizar Rec Devolução', delivery_receipt_contract_path%>
-    </button>				
 		<button type="button" class="btn btn-default">
-    	<%= link_to 'Editar', contract_path%>
-    </button>
-  	<button type="button" class="btn btn-default">
-      <%= link_to 'Voltar', contracts_path%>
-    </button>  
+			<%= link_to 'Recibo Entrega',
+			delivery_receipt_contract_path(@contract.id), method: :post %>
+		</button>
+		<% if @contract.delivery_receipt%>
+		<button type="button" class="btn btn-default">
+			<%= link_to 'Visualizar Rec.Entrega',
+			delivery_receipt_contract_path(@contract.id)%>
+		</button>
+		<% end %>
+		<% if @contract.delivery_receipt%>
+		<button type="button" class="btn btn-default">
+			<%= link_to 'Recibo Devolução', 
+			new_contract_delivery_return_path(@contract)%>
+		</button>	
+		<% end %>
+		<% if @contract.delivery_return %>
+		<button type="button" class="btn btn-default">
+			<%= link_to 'Visualizar Rec Devolução', delivery_receipt_contract_path%>
+		</button>
+		<% end %>
+		<br>
+		<br>
+		<button type="button" class="btn btn-default">
+			<%= link_to 'Editar', contract_path%>
+		</button>
+		<button type="button" class="btn btn-default">
+			<%= link_to 'Voltar', contracts_path%>
+		</button>  
+		<br>
+		<br>
+		<% if @contract.delivery_receipt %>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						<h3 class="panel-title">Recibo de entrega</h3>
+					</div>
+					<div class="panel-body">
+						O recibo foi emitido às <%= @contract.created_at %>
+					</div>
+				</div>
+			</div>
+			<% if @contract.delivery_return %>
+			<div class="col-md-4">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">Recibo de Devolução</h3>
+					</div>
+					<div class="panel-body">
+						O recibo foi emitido às <%= @contract.created_at %>
+					</div>
+				</div>
+			</div>
+			<% end %>
+		</div>
+		<% end %>
+		<% unless @contract.delivery_receipt %>
+		<div class="alert alert-success col-md-4" role="alert" >
+			O seu contrato está pronto para entrega
+		</div>
+		<% end %>
 	</div>
 </div>
