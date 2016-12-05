@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'home#index'
   resources :equipment, only: [:new, :create, :show, :index]
   resources :categories, only: [:new, :create, :show, :index]

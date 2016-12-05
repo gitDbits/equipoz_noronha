@@ -1,72 +1,77 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Equipoz Alpha</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Equipoz Alpha</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <!-- Font awesome-->
-    <script src="https://use.fontawesome.com/ae534a1e6c.js"></script>
-  </head>
-  <body>
+  <!-- Font awesome-->
+  <script src="https://use.fontawesome.com/ae534a1e6c.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-      <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" 
-            data-toggle="collapse" data-target="#navbar" aria-expanded="false" 
-            aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand"<%= link_to 'Equipoz Alpha', root_path %></a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><%= link_to 'Home', root_path %></li>
-              <li><%= link_to 'Clientes', customers_path%></li>
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" 
-                role="button" aria-haspopup="true" aria-expanded="false"> 
-                Equipamentos<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <%= link_to 'Novo equipamento', new_equipment_path %>
-                 </li>
-                 <li>
-                    <%= link_to 'Lista equipamentos', equipment_index_path %>
-                 </li>
-                  <li><%= link_to 'Nova categoria', new_category_path %></li>
-                  <li>
-                    <%= link_to 'Lista categorias', categories_path %>
-                 </li>
-                </ul>
-              </li>
-              <li><a href="#">Tabela de Preço</a></li>
-              <li><%= link_to 'Contratos', contracts_path %></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">Entrar</a></li>
-              <li><a href="#">Criar Usuário</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </nav>
-      <br>
-      <br>
-      <br>
-      <%= flash[:error] %>
-      <%= yield %>  
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" 
+        data-toggle="collapse" data-target="#navbar" aria-expanded="false" 
+        aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand"<%= link_to 'Equipoz Alpha', root_path %></a>
     </div>
-  </body>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Clientes', customers_path%></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" 
+          role="button" aria-haspopup="true" aria-expanded="false"> 
+          Equipamentos<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to 'Novo equipamento', new_equipment_path %>
+            </li>
+            <li>
+              <%= link_to 'Lista equipamentos', equipment_index_path %>
+            </li>
+            <li><%= link_to 'Nova categoria', new_category_path %></li>
+            <li>
+              <%= link_to 'Lista categorias', categories_path %>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#">Tabela de Preço</a></li>
+        <li><%= link_to 'Contratos', contracts_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><span>Olá <%= current_user.email %></span></li>
+        <% else %>
+          <li><%= link_to 'Entrar', new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+<br>
+<br>
+<br>
+  <div class="container">
+    <%= notice %>
+    <%= alert %>
+    <%= flash[:error] %>
+    <%= yield %>  
+  </div>
+</body>
 </html>
