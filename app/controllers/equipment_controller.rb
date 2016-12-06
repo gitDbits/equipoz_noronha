@@ -12,7 +12,7 @@ class EquipmentController < ApplicationController
     if @equipment.save
       redirect_to @equipment
     else
-      flash.now[:error] = 'Todos os campos devem ser preenchidos.'
+      flash.now[:error] = 'Todos os campos devem ser preenchidos'
       render :new
     end
   end

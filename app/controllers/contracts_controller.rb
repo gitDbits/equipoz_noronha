@@ -1,4 +1,6 @@
 class ContractsController < ApplicationController
+  before_action :authenticate_user!, only: [:new]
+
   def index
     @contracts = Contract.all
   end
@@ -10,7 +12,7 @@ class ContractsController < ApplicationController
   end
 
   def create
-    @contract = Contract.new(contract_params)
+    @contract = current_user.contracts.new(contract_params)
     if @contract.save
       redirect_to @contract
     else

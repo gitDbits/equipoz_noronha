@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'User creates Contract' do
   scenario 'successfully' do
+    user = create(:user)
     customer = create(:customer, name: 'Campus')
     equipment = create(:equipment, name: 'Furadeira Bosch vermelha')
     another_equipment = create(:equipment,
@@ -10,9 +11,11 @@ feature 'User creates Contract' do
     contract = build(:contract)
 
     equipment_description = "#{equipment.serial_number} \
-#{equipment.name}"
+                             #{equipment.name}"
     another_equipment_description = "#{another_equipment.serial_number} \
-#{another_equipment.name}"
+                                     #{another_equipment.name}"
+
+    login_as(user)
 
     visit new_contract_path
 
@@ -21,8 +24,6 @@ feature 'User creates Contract' do
     fill_in 'Prazo de Locação', with: contract.rental_period
     fill_in 'Valor Total', with: contract.total_amount
     fill_in 'Desconto', with: contract.discount
-    check(equipment_description)
-    check(another_equipment_description)
     fill_in 'Responsável', with: contract.contact
 
     click_on 'Emitir Contrato'
@@ -39,8 +40,11 @@ feature 'User creates Contract' do
   end
 
   scenario 'no equipment' do
+    user = create(:user)
     customer = create(:customer, name: 'Campus')
     contract = build(:contract)
+
+    login_as(user)
 
     visit new_contract_path
 
@@ -53,6 +57,13 @@ feature 'User creates Contract' do
 
     click_on 'Emitir Contrato'
 
-    expect(page).to have_content('Não foi possível emitir o contrato')
+    expect(page).to have_content('Todos os campos devem ser preenchidos')
+  end
+
+  scenario 'must be authenticated' do
+
+    visit new_contract_path
+
+    expect(current_path).to eq(new_user_session_path)
   end
 end

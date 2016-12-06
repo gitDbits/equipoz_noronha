@@ -4,6 +4,7 @@ class Contract < ApplicationRecord
   belongs_to :customer
   has_many :rented_equipment
   has_many :equipment, through: :rented_equipment
+  belongs_to :user
 
   # validates_associated :equipment
   validates :customer,

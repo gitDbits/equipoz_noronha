@@ -10,7 +10,7 @@
 		<h4>Desconto:<%= @contract.discount %></h4>
 		<h4>
 			<% @contract.equipment.each do |equipment| %>
-			<%= equipment.full_description %>
+				<%= equipment.full_description %>
 			<% end %>
 		</h4>
 		<h4>Responsável:<%= @contract.contact %></h4>

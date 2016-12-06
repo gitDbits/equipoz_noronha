@@ -10,7 +10,7 @@
       <%= f.association :equipment, as: :check_boxes, label_method: 
       :full_description, collection: Equipment.all, label: 'Equipamentos: ' %>
       <%= f.input :contact, label: 'Responsável: ' %>
-      <%= f.submit 'Criar Contrato', class: 'btn btn-primary' %>
+      <%= f.submit 'Emitir Contrato', class: 'btn btn-primary' %>
       <button type="button" class="btn btn-default">
         <%= link_to 'Voltar', contracts_path%>
       </button>
